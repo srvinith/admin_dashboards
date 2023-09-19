@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Bootstrap css start  -->
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="../static/css/responsive.css">
+    <!--Bootstrap css End -->
+    <!-- fontawesome fonts start -->
+    <link rel="stylesheet" href="../static/fonts/all.min.css">
+    <link rel="stylesheet" href="../static/fonts/fontawesome.min.css">
+    <link rel="stylesheet" href="../static/fonts/all.css">
+    <!-- fontawesome fonts End -->
+    <title>OST</title>
+</head>
+
+<body>
+    <div class="sidebar">
+       <a href="home.html">
+        <div class="logo">
+            <img src="../static/images/logos 3.svg" alt="logo" class="img-fluid">
+        </div>
+       </a>
+        <div class="product-list" id="productListBtn">
+            <div class="d-flex align-items-center justify-content-around">
+                <p>Product List</p>
+                <p>
+                    <span id="downArrow">
+                        <lord-icon src="https://cdn.lordicon.com/rxufjlal.json" trigger="hover" colors="primary:#121331"
+                            style="width:30px;height:30px">
+                        </lord-icon>
+                    </span>
+                    <span id="upArrow">
+                        <lord-icon src="https://cdn.lordicon.com/xsdtfyne.json" trigger="hover" colors="primary:#121331"
+                            style="width:30px;height:30px">
+                        </lord-icon>
+                    </span>
+                </p>
+            </div>
+        </div>
+        <ul id="menulist">
+            <a href="threechannel.html">
+                <li class="menu-list active"><span class="menu-icon"><img src="../static/images/3-ch.svg" alt="3 channel-icon"
+                            class="img-fluid"></span><span class="text-menu">3 Channel</span></li>
+            </a>
+            <a href="fourchannel.html">
+                <li class="menu-list"><span class="menu-icon"><img src="../static/images/4-channel.svg"
+                            alt="4 channel-icon" class="img-fluid"></span><span class="text-menu">4 Channel</span></li>
+            </a>
+            <a href="wta.html">
+                <li class="menu-list"><span class="menu-icon"><img src="../static/images/wta.svg" alt="wta-icon"
+                            class="img-fluid"></span><span class="text-menu">WTA</span></li>
+            </a>
+        </ul>
+    </div>
+
+    <!-- enquery form start -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <center>
+                        <h5>Firmware File Upload</h5>
+                        <form action="">
+                            <div class="product-ids">
+                                <input type="text" placeholder="Product Id" class="">
+                            </div>
+
+                            <div class="product-ids">
+                                <label for="file-upload" class="file-lable">
+                                    <p>Upload File</p>
+                                    <p><i class="fa-solid fa-file"></i></p>
+                                </label>
+                                <input type="file" placeholder="uploade file" class="file-inp" id="file-upload">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </form>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- enquery form end -->
+
+
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-10">
+                    <div class="top-search-bar">
+                        <input type="text" placeholder="Product Id">
+                        <button><lord-icon src="https://cdn.lordicon.com/xfftupfv.json" trigger="hover"
+                                colors="primary:#757070" style="width:30px;height:30px">
+                            </lord-icon></button>
+                    </div>
+                    <div class="row">
+                        <div class="updateBtn">
+                            <button data-bs-toggle="modal" data-bs-target="#exampleModal"><lord-icon
+                                    src="https://cdn.lordicon.com/wfadduyp.json" trigger="hover" colors="primary:#fff"
+                                    style="width:30px;height:30px">
+                                </lord-icon><span>Update</span></button>
+                        </div>
+                    </div>
+                    <div class="serach-list" id="searchList">
+                        <div class="row my-4">
+                            <div class="col-md-7">
+                                <h5 class="information-title">Device Information</h5>
+                                <div class="device-information-con">
+                                    <div class="online-option">
+                                        <div class="online">
+                                            <p class="circle circle-on"></p>
+                                            <p class="online-text on-text">Online</p>
+                                        </div>
+                                        <div class="online offline">
+                                            <p class="circle circle-off"></p>
+                                            <p class="online-text off-text">Online</p>
+                                        </div>
+                                    </div>
+                                    <table class="table table-li">
+                                        <tbody>
+                                            <tr class="table-row">
+                                                <td>User Name</td>
+                                                <td>Admin</td>
+                                            </tr>
+                                            <tr class="table-row">
+                                                <td>Activation Date</td>
+                                                <td>23/07/2023</td>
+                                            </tr>
+                                            <tr class="table-row">
+                                                <td>Disconnected Time</td>
+                                                <td>09.12</td>
+                                            </tr>
+                                            <tr class="table-row">
+                                                <td>IP Address</td>
+                                                <td>192.168.1.18</td>
+                                            </tr>
+                                            <tr class="table-row">
+                                                <td>WiFi Address</td>
+                                                <td>117.247.181.119</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <h5 class="information-title">Firmware Information</h5>
+                                <div class="frimware-information-con">
+                                    <table class="table table-li">
+                                        <tbody class="firm-ware-bot">
+                                            <tr class="table-row">
+                                                <td>File Name</td>
+                                                <td>Charte1</td>
+                                            </tr>
+                                            <tr class="table-row">
+                                                <td>Update Date</td>
+                                                <td>02/09/2023</td>
+                                            </tr>
+                                            <tr class="table-row">
+                                                <td>Version</td>
+                                                <td>1.2.23</td>
+                                            </tr>
+                                        </tbody>
+                                        <tbody class="firm-ware-bot">
+                                            <tr class="table-row">
+                                                <td>File Name</td>
+                                                <td>Charte1</td>
+                                            </tr>
+                                            <tr class="table-row">
+                                                <td>Update Date</td>
+                                                <td>02/09/2023</td>
+                                            </tr>
+                                            <tr class="table-row">
+                                                <td>Version</td>
+                                                <td>1.2.23</td>
+                                            </tr>
+                                        </tbody>
+                                        <tbody class="firm-ware-bot">
+                                            <tr class="table-row">
+                                                <td>File Name</td>
+                                                <td>Charte1</td>
+                                            </tr>
+                                            <tr class="table-row">
+                                                <td>Update Date</td>
+                                                <td>02/09/2023</td>
+                                            </tr>
+                                            <tr class="table-row">
+                                                <td>Version</td>
+                                                <td>1.2.23</td>
+                                            </tr>
+                                        </tbody>
+                                        <tbody class="firm-ware-bot">
+                                            <tr class="table-row">
+                                                <td>File Name</td>
+                                                <td>Charte1</td>
+                                            </tr>
+                                            <tr class="table-row">
+                                                <td>Update Date</td>
+                                                <td>02/09/2023</td>
+                                            </tr>
+                                            <tr class="table-row">
+                                                <td>Version</td>
+                                                <td>1.2.23</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table text-center my-4">
+                        <thead>
+                            <tr class="head-table">
+                                <th>S.No</th>
+                                <th>Client Name</th>
+                                <th>Activation Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Suresh</td>
+                                <td>10/08/2023</td>
+                                <td><a href="#searchList"><button class="view-btn" id="view">View</button></a></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Ramesh</td>
+                                <td>23/04/2023</td>
+                                <td><button class="view-btn">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Ram</td>
+                                <td>20/05/2023</td>
+                                <td><button class="view-btn">View</button></td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- scripts Start -->
+    <script src="../static/js/bootstrap.bundle.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/main.js"></script>
+
+    <!-- fontawesome fonts start -->
+    <script src="../static/js/all.min.js"></script>
+    <script src="../static/js/fontawesome.min.js"></script>
+    <!-- fontawesome fonts End -->
+    <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+    <!-- scripts End -->
+    <script>
+        const searchList = document.getElementById('searchList')
+        const view = document.getElementById('view')
+
+        view.addEventListener('click', () => {
+            if (searchList.style.display == 'none') {
+                searchList.style.display = 'block'
+            }
+            else {
+                searchList.style.display = 'none'
+            }
+        })
+    </script>
+</body>
+
+</html>
