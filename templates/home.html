@@ -31,15 +31,18 @@
                             <div class="logo">
                                 <img src="{% static 'images/logos-3.svg' %}" alt="logo" class="img-fluid">
                             </div>
+                            
+                           
                             <div class="current-month">
-                                <p class="month-listout">September 2023</p>
+                                <p class="month-listout">{{current_month}}</p>
                             </div>
+                          
                         </div>
                         <div class="table-list">
                             <table class="table">
                                 <thead>
                                     <tr class="table-head">
-                                        <th>#</th>
+                                        <!-- <th>#</th> -->
                                         <th>Contact Number</th>
                                         <th>Executives </th>
                                         <th> Target Points</th>
@@ -49,73 +52,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="table-body">
-                                        <td>01</td>
-                                        <td>9080706050</td>
-                                        <td class="profile"><span class="profile-img-sec"><img
-                                                    src="{%static 'images/profile-pic.svg'%}" alt="profile-pic"
-                                                    class="img-fluid"></span><span>Karthick Raja</span></td>
-                                        <td class="text-danger">900</td>
-                                        <td class="text-success">600</td>
-                                        <td><span class="total-sale">18</span></td>
-                                        <td>44</td>
-                                    </tr>
-                                    <tr class="table-body">
-                                        <td>02</td>
-                                        <td>1234567890</td>
-                                        <td class="profile"><span class="profile-img-sec"><img
-                                                    src="{%static 'images/profile-pic.svg'%}" alt="profile-pic"
-                                                    class="img-fluid"></span><span>Pradeep Kanth</span></td>
-                                        <td class="text-danger">900</td>
-                                        <td class="text-success">460</td>
-                                        <td><span class="total-sale">12</span></td>
-                                        <td>39</td>
-                                    </tr>
-                                    <tr class="table-body">
-                                        <td>03</td>
-                                        <td>9878685848</td>
-                                        <td class="profile"><span class="profile-img-sec"><img
-                                                    src="{%static 'images/profile-pic.svg'%}" alt="profile-pic"
-                                                    class="img-fluid"></span><span>Goutham</span></td>
-                                        <td class="text-danger">900</td>
-                                        <td class="text-success">450</td>
-                                        <td><span class="total-sale">10</span></td>
-                                        <td>32</td>
-                                    </tr>
-                                    <tr class="table-body">
-                                        <td>04</td>
-                                        <td>9876543210</td>
-                                        <td class="profile"><span class="profile-img-sec"><img
-                                                    src="{%static 'images/profile-pic.svg'%}" alt="profile-pic"
-                                                    class="img-fluid"></span><span> Vasanth</span></td>
-                                        <td class="text-danger">900</td>
-                                        <td class="text-success">420</td>
-                                        <td><span class="total-sale">08</span></td>
-                                        <td>29</td>
-                                    </tr>
-                                    <tr class="table-body">
-                                        <td>05</td>
-                                        <td>Arun kumar</td>
-                                        <td class="profile"><span class="profile-img-sec"><img
-                                                    src="{%static 'images/profile-pic.svg'%}" alt="profile-pic"
-                                                    class="img-fluid"></span><span>Arun kumar</span></td>
-                                        <td class="text-danger">900</td>
-                                        <td class="text-success">360</td>
-                                        <td><span class="total-sale">06</span></td>
-                                        <td>24</td>
-                                    </tr>
-                                    <tr class="table-body">
-                                        <td>01</td>
-                                        <td>9080706050</td>
-                                        <td class="profile"><span class="profile-img-sec"><img
-                                                    src="{%static 'images/profile-pic.svg'%}" alt="profile-pic"
-                                                    class="img-fluid"></span><span>Karthick Raja</span></td>
-                                        <td class="text-danger">900</td>
-                                        <td class="text-success">600</td>
-                                        <td><span class="total-sale">18</span></td>
-                                        <td>44</td>
-                                    </tr>
-
+                                    {% for user in user_data %}
+                                      <tr class="table-body">
+                                        <td>{{ user_data.mobile_number }}</td>
+                                         
+                                        <td class="profile">
+                                          <span class="profile-img-sec">
+                                            <img src="{% static 'images/profile-pic.svg' %}" alt="profile-pic" class="img-fluid">
+                                          </span>
+                
+                                          <span>{{ user.name }}</span>
+                                        </td>
+                                       
+                                        <td class="text-danger">{{ month_entry.target_points }}</td>
+                                        <td class="text-success">{{ user.achieved_points }}</td>
+                                        <td><span class="total-sale">{{ month_entry.total_sales }}</span></td>
+                                        <td>{{ month_entry.total_visits }}</td>
+                                      </tr>
+                                      {% endfor %}  
                                 </tbody>
                             </table>
 
@@ -139,7 +93,7 @@
                     <div class="f-top-second f-one">
                         <div class="f-one-top">
                             <img src="{%static 'images/call-icon.svg'%}" alt="call-icon" class="img-fluid">
-                            <span class="call-text">599</span>
+                            <span class="call-text">{{ overall_calls }}</span>
                         </div>
                         <div class="f-one-top-sec">
                             <span class="today-call-text">Calls so far -Today</span>
@@ -147,12 +101,15 @@
                                     class="fa-solid fa-arrow-down"></i></span>
                         </div>
                         <div class="f-top-one-list">
+                            {% for user in user_data %}
                             <div class="list-call row">
-                                <span class="caller-name col-md-8">Dinesh</span>
-                                <span class="caller-count col-md-2">34</span>
+                                <span class="caller-name col-md-8">{{ user.name }}</span>
+                                <span class="caller-count col-md-2">{{ user.visits_arranged}}</span>
                                 <span class="col-md-2"></span>
                             </div>
-                            <div class="list-call row">
+                            {% endfor %}
+                            
+                            <!-- <div class="list-call row">
                                 <span class="caller-name col-md-8">Karthika</span>
                                 <span class="caller-count col-md-2">25</span>
                                 <span class="col-md-2"></span>
@@ -166,7 +123,7 @@
                                 <span class="caller-name col-md-8">Lokesh</span>
                                 <span class="caller-count col-md-2">39</span>
                                 <span class="col-md-2"></span>
-                            </div>
+                            </div> -->
 
                         </div>
                     </div>
@@ -176,11 +133,12 @@
                                 <div class="customer-main-con">
                                     <div class="customer-line-text">
                                         <span class=""><i class="fa-solid fa-user-group"></i><span
-                                                class="customer-text">Customers</span></span>
+                                                class="customer-text"> <p>Present counts: {{presentCount}}</p>
+                        <p>Absent counts: {{absentCount}}</p></span></span>
                                     </div>
                                     <div class="customer-count">
-                                        <h2>23,540</h2>
-                                        <p class="text-success">34.4% <i class="fa-solid fa-arrow-up"></i></p>
+                                        <h2></h2>
+                                        <p class="text-success">{{curr_week}} week of {{curr_year}} </p>
                                     </div>
                                 </div>
                             </div>
@@ -192,7 +150,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                    
+                </div> 
                 <div class="col-md-3">
                     <div class="f-top-second f-one">
                         <iframe
@@ -202,16 +161,17 @@
                     </div>
                     <div class="f-top-second lead-port-con">
                         <div class="lead-port">
-                            <span class="total-lead-text">TOTAL LEADS</span><br>
-                            <span class="lead-number">41</span>
-                            <div class="lead-list">
+                            <span class="total-lead-text">TOTAL LEADS</span>
+                            <span class="lead-number" id="totalflead"></span>
+                            <table id="leadTable" class="table my-1" style="border: none;"></table>
+                            <!-- <div class="lead-list">
                                 <span>AJAX - ANITHA</span>
                                 <span>08</span>
                             </div>
                             <div class="lead-list">
                                 <span>Gate Only Campaign</span>
                                 <span>33</span>
-                            </div>
+                            </div> -->
 
                         </div>
                     </div>
@@ -295,24 +255,31 @@
                 <div class="col-md-4">
                     <div class="bottom-box m-0 p-0">
                         <div class="overall-sale">
-                            <div class="top-sale-text">
-                                <div>
-                                    <p class="perfomance">Overall Sales</p>
+                        
+                                <div class="tim">
+                                    <p id="Days" class="numb"></p>
+                                
+                                 
+                             
+                               
+                                    <p id="Hours" class="numb"></p>
+                                  
+                                  
+                               
+                               
+                  
+                                    <p id="Minutes" class="numb"></p>
+                                    <p id="Seconds" class="numb"></p>
+        
+                                 
+                                    <p id ="time1" ></p>
+                                    <p>{{curr_date}}</p>
+                                    <!-- <span id ="countdown" class="text-white date"></span> -->
                                 </div>
-                                <div class="d-flex align-items-center">
-                                    <p>
-                                    <p class="circle income-circl mx-2"></p>
-                                    <p class="sales-inc">Income</p>
-                                    </p>
-                                    <p>
-                                    <p class="circle expense-circl mx-2"></p>
-                                    <p class="sales-inc">Expense</p>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="sales-chart">
-                                <div id="columnchart_material" style="width: 400px; height: 190px;"></div>
-                            </div>
+                                  
+                           
+                            <!-- <p class="static-date">Target Date : 30.09.2023</p> -->
+                          
                         </div>
                     </div>
                 </div>
@@ -363,72 +330,74 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
+
     <script>
-        var ctxvin = document.getElementById('myChart31').getContext('2d');
-        var myChart31 = new Chart(ctxvin, {
-            type: 'bar',
-            data: {
-                labels: ['GATE', 'AJAX', 'S.H'],
-                datasets: [{
-                    label: 'My First Dataset',
-                    datalabels: {
-                        labels: {
-                            value: {
-                                color: 'green'
-                            }
-                        }
-                    },
-                    data: [23, 45, 23],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.8)',
-                        'rgba(255, 206, 86, 0.8)',
-                        'rgba(75, 192, 192, 0.8)',
-                    ],
+        // var ctxvin = document.getElementById('myChart31').getContext('2d');
+        // var myChart31 = new Chart(ctxvin, {
+        //     type: 'bar',
+        //     data: {
+        //         labels: ['GATE', 'AJAX', 'S.H'],
+        //         datasets: [{
+        //             label: 'My First Dataset',
+        //             datalabels: {
+        //                 labels: {
+        //                     value: {
+        //                         color: 'green'
+        //                     }
+        //                 }
+        //             },
+        //             data: [23, 45, 23],
+        //             backgroundColor: [
+        //                 'rgba(255, 99, 132, 0.8)',
+        //                 'rgba(255, 206, 86, 0.8)',
+        //                 'rgba(75, 192, 192, 0.8)',
+        //             ],
 
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                    ],
-                    // borderWidth: 1
-                }]
-            },
+        //             borderColor: [
+        //                 'rgba(255, 99, 132, 1)',
+        //                 'rgba(255, 206, 86, 1)',
+        //                 'rgba(75, 192, 192, 1)',
+        //             ],
+        //             // borderWidth: 1
+        //         }]
+        //     },
 
-            options: {
-                legend: {
-                    display: false //This will do the task
-                },
-                scales: {
-                    xAxes: [{
-                        barPercentage: 0.4,
-                        barThickness: 16,
-                        ticks: {
-                            color: 'white',
-                            fontSize: 10,
+        //     options: {
+        //         legend: {
+        //             display: false //This will do the task
+        //         },
+        //         scales: {
+        //             xAxes: [{
+        //                 barPercentage: 0.4,
+        //                 barThickness: 16,
+        //                 ticks: {
+        //                     color: 'white',
+        //                     fontSize: 10,
 
-                        },
-                        gridLines: {
-                            display: false,
-                            drawBorder: false,
-                        }
-                    }],
-                    yAxes: [{
-                        ticks: {
-                            fontSize: 10,
-                            color: 'white',
+        //                 },
+        //                 gridLines: {
+        //                     display: false,
+        //                     drawBorder: false,
+        //                 }
+        //             }],
+        //             yAxes: [{
+        //                 ticks: {
+        //                     fontSize: 10,
+        //                     color: 'white',
+                          
 
-                        },
-                        gridLines: {
-                            display: false,
-                            drawBorder: false,
-                        }
+        //                 },
+        //                 gridLines: {
+        //                     display: false,
+        //                     drawBorder: false,
+        //                 }
 
 
 
-                    }]
-                }
-            }
-        });
+        //             }]
+        //         }
+        //     }
+        // });
 
         // ===============expense chart
         var xValues = [];
@@ -484,34 +453,87 @@
             }
         });
 
+        $(document).ready(function () {
+            // Call the update functions immediately
+            updateState1();
+            updateState();
 
-    </script>
-    <script type="text/javascript">
-        google.charts.load('current', { 'packages': ['bar'] });
-        google.charts.setOnLoadCallback(drawChart);
+            // Periodically update Facebook leads data
+            setInterval(updateState1, 60000);
 
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['', '', ''],
-                ['may', 1000, 400],
-                ['June', 1170, 460],
-                ['July', 660, 1120],
-                ['Aug', 1030, 540],
-                ['Sep', 1030, 540],
-                ['Oct', 1030, 540],
-                ['Nov', 1030, 540],
-                ['Dec', 1030, 540],
-            ]);
-
-            var options = {
-
-            };
-
-            var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
-
-            chart.draw(data, google.charts.Bar.convertOptions(options));
+            // Periodically update other data
+            setInterval(updateState, 1000);
+        }); 
+  
+        function updateState1() {
+            $.ajax({
+                url: "/flead/",
+                type: 'GET'
+            })
+            .done(response =>
+            {   
+                const data = response
+                const facebookLeads = data["faceboodklead"];
+                totaladleads = data["totaladleads"];
+                console.log("ad",totaladleads)
+                
+                // Build the HTML for the table
+                let tableHTML = "";
+                for (const lead of facebookLeads) {
+                    tableHTML += `<tr style='border:none;border-radius:10px;' class="bor-data">
+                                    <td class="t-data">${lead.ad_name}</td>
+                                    <td class="t-data">${lead.lead_count}</td>
+                                </tr>`;
+                }
+                document.getElementById("leadTable").innerHTML = tableHTML;
+                document.getElementById("totalflead").innerHTML =totaladleads;
+                document.getElementById("totalflead1").innerHTML =totaladleads;
+            });
         }
-    </script>
+
+        function updateState() {
+            $.ajax({
+                url: "/get_data/",
+                type: 'GET'
+            })
+            .done(response =>
+                    {   
+                        const data = response
+                        time2 = data["time2"]; // Assuming "time" contains t2 from the Flask backend
+                        currentTime = new Date(time2);
+                        targetDate = new Date("2023-09-30T00:00:00");
+                        timeDifference = targetDate - currentTime;
+                        daysRemaining = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                        hoursRemaining = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        minutesRemaining = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                        secondsRemaining = Math.floor((timeDifference % (1000 * 60)) / 1000);
+                        function addLeadingZero(number) {
+                                return number.toString().padStart(2, '0');
+                        }
+                        document.getElementById('Days').innerText=addLeadingZero(daysRemaining)
+                        document.getElementById('Hours').innerText=addLeadingZero(hoursRemaining)
+                        document.getElementById('Minutes').innerText=addLeadingZero(minutesRemaining)
+                        document.getElementById('Seconds').innerText=addLeadingZero(secondsRemaining)
+
+                        // document.getElementById("countdown").innerText = daysRemaining + "" + hoursRemaining + "" + minutesRemaining + "" + secondsRemaining + "";
+                        time=data["time"]
+                        document.getElementById("time1").innerHTML=time
+                    });
+                }
+
+
+
+
+</script>
+<script>
+    function checkInternetAndRefresh() {
+      if (navigator.onLine) {
+        location.reload();
+      }
+    }
+  
+    setInterval(checkInternetAndRefresh, 900000);
+  </script>
 </body>
 
 </html>
