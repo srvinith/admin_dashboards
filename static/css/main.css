@@ -108,7 +108,7 @@ body {
     border-radius: 100%;
     overflow: hidden;
     /* background-color: #000; */
-    margin: 0px 10px;
+    margin-right: 10px;
 }
 
 .profile-img-sec img {
@@ -159,6 +159,11 @@ body {
     padding: 10px;
     overflow: hidden;
 }
+.f-one img{
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 .f-one-top {
     display: flex;
@@ -200,10 +205,11 @@ body {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     width: 100%;
     height: 35px;
-    margin: 6px 0px;
+    margin: 4px 0px;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    line-height: 17px;
 }
 
 .caller-name {
@@ -230,7 +236,10 @@ body {
     min-height: 22vh;
     max-height: 22vh;
 }
-
+.f-two p{
+    font-size: 40px;
+    font-weight: 700;
+}
 .customer-line-text {
     white-space: none;
     width: 100%;
@@ -294,11 +303,15 @@ body {
     font-weight: 600;
     border-radius: 4px;
     font-size: 20px;
+    margin-top: 4px !important;
 }
 
 .total-lead-text {
     font-weight: 500;
 
+}
+#leadTable tr{
+    border-radius: 10px !important;
 }
 
 .expense {
@@ -364,9 +377,6 @@ body {
     color: #fff;
     border-radius: 10px !important;
     margin: 2px auto !important;
-}
-.bor-data tr{
-    
 }
 
 .circle {
@@ -505,4 +515,74 @@ body {
     color: #6E6E91;
 }
 
+.timer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+.timer p,.timer span{
+font-size: 50px;
+font-weight: 700;
+}
 /* =============bottom box */
+.timer-f{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    /* justify-content: space-between; */
+    height: fit-content;
+}
+.time-remain-text {
+    color: #212529;
+    text-transform: uppercase;
+    font-size: 23px;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 3px;
+}
+.day-timer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px 20px;
+}
+.day-timer .tim{
+    font-size: 40px;
+    font-weight: 600;
+    color: #212529;
+
+}
+.day-timer span{
+    color: #212529;
+    font-weight: 600;
+    font-size: 40px;
+}
+.tim{
+    display: flex;
+    align-items: center;
+}
+.numb{
+    font-size: 50px !important;
+    
+}
+.semi{
+    padding: 0px 20px;
+}
+.static-date{
+    font-size: 20px;
+    color:#212529;
+    padding: 0 20px;
+    
+}
+.static-date span{
+    font-weight: 600;
+}
+.clock-bottom-text{
+    font-weight: 500;
+    padding-top: -10px;
+}
+.clock-icon{
+    width: 30px;
+}
