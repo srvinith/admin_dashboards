@@ -114,6 +114,7 @@ def home(request):
         # curr_mon_year = str(dtNow.strftime("%Y-%m"))
         curr_year = dtNow.year
         current_month = dtNow.month
+        current_month_name = calendar.month_name[dtNow.month]
         curr_month = str(dtNow.month).zfill(2)
         curr_date=dtNow.strftime("%d-%m-%Y")
         year = dtNow.isocalendar()[0]
@@ -224,6 +225,7 @@ def home(request):
             "curr_year":curr_year,
             "curr_week":curr_week,
             "curr_date":curr_date,
+            "curr_month":current_month_name,
             # "num_customers":num_customers
         }
     
