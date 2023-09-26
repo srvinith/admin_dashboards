@@ -133,35 +133,45 @@ def home(request):
 
         
         try:
-            for uid in PRpoints:
+            for uid in PRpoints:   
                 name = PRpoints[uid].get("name")
-               
+                if uid in allDataBase["staff"]:
+                    mobilenum = allDataBase["staff"][uid].get("mobile", None)
+                else:
+                    # If uid is not found in staff data, set mobilenum to None
+                    mobilenum = None
+
+                print("mobile",mobilenum)   
+
                 if name:
                     achieved_points = 0
-                    # sales=0
+                    sales=0
                     visits_arranged=0
-                    # visits=0
+                    visiteds=0
                     try:
                         for date in month_dates:
+                            target_point = PRpoints[uid].get(str(curr_year), {}).get(str(curr_month), {}).get('total_monthly_points',0)
                             achieved_point = PRpoints[uid].get(str(curr_year), {}).get(str(curr_month), {}).get(date, {}).get('points')
-                            # sale=PRpoints[uid].get(str(curr_year), {}).get(str(curr_month), {}).get(date, {}).get('sales')
+                            sale=PRpoints[uid].get(str(curr_year), {}).get(str(curr_month), {}).get(date, {}).get('sales')
                             visit_arranged=PRpoints[uid].get(str(curr_year), {}).get(str(curr_month), {}).get(date, {}).get('visit_arranged')
-                            # visited=PRpoints[uid].get(str(curr_year), {}).get(str(curr_month), {}).get(date, {}).get('visited')
+                            visited=PRpoints[uid].get(str(curr_year), {}).get(str(curr_month), {}).get(date, {}).get('visited')
                             if achieved_point is not None:
                                 achieved_points += achieved_point
-                            # if sale is not None:
-                            #     sales += sale
+                            if sale is not None:
+                                sales += sale
                             if visit_arranged is not None:
                                 visits_arranged += visit_arranged
-                            # if visited is not None:
-                            #     visits += visited            
+                            if visited is not None:
+                                visiteds += visited            
                     except Exception as e:
                         print("An error:", str(e))
                     user_data.append({"name": name,
                                        "achieved_points": achieved_points,
-                                    #    "sales":sales,
+                                       "sales":sales,
                                        "visits_arranged":visits_arranged,
-                                    #    "visits":visits
+                                       "visited":visiteds,
+                                       "target_points":target_point,
+                                       "mobilenumber":mobilenum
                                        })
         except Exception as e:
             print("An error occurred:", str(e))

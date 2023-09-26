@@ -16,6 +16,38 @@
     <link rel="stylesheet" href="{%static 'fonts/all.css'%}">
     <!-- fontawesome fonts End -->
     <title>Admin Dashboard</title>
+    <!-- <style>
+        .carousel-container {
+            height: 300px; /* Adjust the height as needed */
+            overflow: hidden;
+            }
+
+        .carousel-containers {
+            height: 300px; /* Adjust the height as needed */
+            overflow: hidden;
+            }    
+        .carousel-container table tbody tr {
+            transition: margin-top 0.5s ease-in-out; /* Adjust the transition duration and timing function as needed */
+            } 
+        .list-wrapper {
+            animation: moveList 20s linear infinite; /* Adjust the animation duration as needed */
+            }
+
+        .list-call {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px; /* Adjust spacing between items as needed */
+            }
+            @keyframes moveList {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-100%);
+            }
+            }   
+
+    </style> -->
 </head>
 
 <body>
@@ -39,6 +71,7 @@
                           
                         </div>
                         <div class="table-list">
+                            <div class="carousel-container">
                             <table class="table">
                                 <thead>
                                     <tr class="table-head">
@@ -54,7 +87,7 @@
                                 <tbody>
                                     {% for user in user_data %}
                                       <tr class="table-body">
-                                        <td>{{ user_data.mobile_number }}</td>
+                                        <td>{{ user.mobilenumber }}</td>
                                          
                                         <td class="profile">
                                           <span class="profile-img-sec">
@@ -64,15 +97,15 @@
                                           <span>{{ user.name }}</span>
                                         </td>
                                        
-                                        <td class="text-danger">{{ month_entry.target_points }}</td>
+                                        <td class="text-danger">{{ user.target_points }}</td>
                                         <td class="text-success">{{ user.achieved_points }}</td>
-                                        <td><span class="total-sale">{{ month_entry.total_sales }}</span></td>
-                                        <td>{{ month_entry.total_visits }}</td>
+                                        <td><span class="total-sale">{{ user.sales }}</span></td>
+                                        <td>{{ user.visited }}</td>
                                       </tr>
                                       {% endfor %}  
                                 </tbody>
                             </table>
-
+                        </div>
                         </div>
                         <div class="table-bottom">
                             <p></p>
@@ -101,13 +134,27 @@
                                     class="fa-solid fa-arrow-down"></i></span>
                         </div>
                         <div class="f-top-one-list">
-                            {% for user in user_data %}
-                            <div class="list-call row">
-                                <span class="caller-name col-md-8">{{ user.name }}</span>
-                                <span class="caller-count col-md-2">{{ user.visits_arranged}}</span>
-                                <span class="col-md-2"></span>
-                            </div>
-                            {% endfor %}
+                         
+                                
+                                 
+                                <div class="carousel-container2">
+                                    <table class="table">
+                                        <tbody >
+                                            {% for user in user_data %}
+                                            <tr class="second">
+                                                <td class="list-call row">
+                                                    <span class="caller-name col-md-8">{{ user.name }}</span>
+                                                    <span class="caller-count col-md-2">{{ user.visits_arranged}}</span>
+                                                    <span class="col-md-2"></span>
+                                                </td>
+    
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                
+                                    
+                                </div>
                             
                             <!-- <div class="list-call row">
                                 <span class="caller-name col-md-8">Karthika</span>
@@ -524,16 +571,69 @@
 
 
 
-</script>
-<script>
-    function checkInternetAndRefresh() {
-      if (navigator.onLine) {
-        location.reload();
-      }
-    }
-  
-    setInterval(checkInternetAndRefresh, 900000);
-  </script>
+                    </script>
+                    <script>
+                        function checkInternetAndRefresh() {
+                        if (navigator.onLine) {
+                            location.reload();
+                        }
+                        }
+                    
+                        setInterval(checkInternetAndRefresh, 900000);
+                    </script>
+                    <script>
+                    // Function to move the first table rows upward and downward
+                    function animateTable1() {
+                    const $table1 = $('.carousel-container table');
+                    const $tableBody1 = $table1.find('tbody');
+                    const rowHeight1 = $table1.find('tr:first').outerHeight();
+
+                    // Animate the table rows
+                    function moveRows1() {
+                        $tableBody1.animate({ marginTop: -rowHeight1 }, 1000, 'linear', function () {
+                            // Move the first row to the end and reset margin
+                            $tableBody1.find('tr:first').appendTo($tableBody1);
+                            $tableBody1.css('marginTop', 0);
+                        });
+                    }
+
+                    // Start the animation
+                    setInterval(moveRows1, 3000); // Adjust the interval as needed
+                }
+
+                // Call the function when the document is ready
+                $(document).ready(function () {
+                    animateTable1();
+                });
+
+                    // Function to move the second table rows upward and downward
+                    function animateTable2() {
+                        const $table2 = $('.carousel-container2 table');
+                        const $tableBody2 = $table2.find('tbody');
+                        const rowHeight2 = $table2.find('tr:first').outerHeight();
+
+                        // Clone the first row and append it to the end to create a continuous loop
+                        
+
+                        // Animate the table rows
+                        function moveRows2() {
+                            $tableBody2.animate({ marginTop: -rowHeight2 }, 1000, 'linear', function () {
+                                // Move the first row to the end and reset margin
+                                $tableBody2.find('tr:first').appendTo($tableBody2);
+                                $tableBody2.css('marginTop', 0);
+                            });
+                        }
+
+                        // Start the animation
+                        setInterval(moveRows2, 5000); // Adjust the interval as needed
+                    }
+
+                    // Call the function when the document is ready
+                    $(document).ready(function () {
+                        animateTable2();
+                    });
+                </script>
+                
 </body>
 
 </html>
