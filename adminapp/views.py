@@ -132,7 +132,7 @@ def home(request):
         #Sales perfomance table and visit arranged table
         user_data = []
 
-        x
+        
         try:
             for uid in PRpoints:   
                 name = PRpoints[uid].get("name")
@@ -151,7 +151,7 @@ def home(request):
                     visiteds=0
                     try:
                         for date in month_dates:
-                            target_point = PRpoints[uid].get(str(curr_year), {}).get(str(curr_month), {}).get('total_monthly_points',0)
+                            target_point = PRpoints[uid].get(str(curr_year), {}).get(str(curr_month), {}).get(str("total"), {}).get('total_monthly_points',0)
                             achieved_point = PRpoints[uid].get(str(curr_year), {}).get(str(curr_month), {}).get(date, {}).get('points')
                             sale=PRpoints[uid].get(str(curr_year), {}).get(str(curr_month), {}).get(date, {}).get('sales')
                             visit_arranged=PRpoints[uid].get(str(curr_year), {}).get(str(curr_month), {}).get(date, {}).get('visit_arranged')
