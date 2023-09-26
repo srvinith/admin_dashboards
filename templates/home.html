@@ -152,7 +152,6 @@
                                 <p class="mb-4 perfomance">Attendanced </p>
                                 <div class="attendance-count"><p class="circl-atten present"></p><p>Present:{{presentCount}}</p></div>
                                 <div class="attendance-count"><p class="circl-atten absent"></p><p>Absentees: {{absentCount}}</p></div>
-                               
                             </div>
                         </div>
 
@@ -312,7 +311,7 @@
                                     <canvas id="myChart3" width="100" height="100"></canvas>
                                 </div>
                                 <div class="boost-img">
-                                    <img src="../static/images/boost-img.png" alt="boost-img">
+                                    <img src="{% static 'images/boost-img.png' %}" alt="boost-img">
                                 </div>
                                 <div class="center-text-boost">
                                     <p class="boost-precentage">84%</p>
@@ -474,7 +473,7 @@
             }
         });
 
-        // =======================
+        // =======================attendanced chart=================
 
         var xValues = [];
         var yValues = [84, 16];
@@ -500,6 +499,7 @@
                 }
             }
         });
+        // =================attendance chart end===========
 
         $(document).ready(function () {
             // Call the update functions immediately
