@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{%static 'fonts/all.css'%}">
     <!-- fontawesome fonts End -->
     <title>Admin Dashboard</title>
-  </head>
+</head>
 
 <body>
     <div class="container-fluid">
@@ -31,51 +31,52 @@
                             <div class="logo">
                                 <img src="{% static 'images/logos-3.svg' %}" alt="logo" class="img-fluid">
                             </div>
-                            
-                           
+
+
                             <div class="current-month">
                                 <p class="month-listout">{{current_month}}</p>
                             </div>
-                          
+
                         </div>
                         <div class="table-list">
                             <div class="carousel-container">
-                            <table class="table">
-                                <thead>
-                                    <tr class="table-head">
-                                        <!-- <th>#</th> -->
-                                        <th>Contact Number</th>
-                                        <th>Executives </th>
-                                        <th> Target Points</th>
-                                        <th> Achieved Points</th>
-                                        <th>Total Sales</th>
-                                        <th>Visits</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for user in user_data %}
-                                      <tr class="table-body">
-                                        <td>{{ user.mobilenumber }}</td>
-                                         
-                                        <td class="profile">
-                                          <span class="profile-img-sec">
-                                            <img src="{% static 'images/profile-pic.svg' %}" alt="profile-pic" class="img-fluid">
-                                          </span>
-                
-                                          <span>{{ user.name }}</span>
-                                        </td>
-                                       
-                                        <td class="text-danger">{{ user.target_points }}</td>
-                                        <td class="text-success">{{ user.achieved_points }}</td>
-                                        <td><span class="total-sale">{{ user.sales }}</span></td>
-                                        <td>{{ user.visited }}</td>
-                                      </tr>
-                                      {% endfor %}  
-                                </tbody>
-                            </table>
+                                <table class="table">
+                                    <thead>
+                                        <tr class="table-head">
+                                            <!-- <th>#</th> -->
+                                            <th>Contact Number</th>
+                                            <th>Executives </th>
+                                            <th> Target Points</th>
+                                            <th> Achieved Points</th>
+                                            <th>Total Sales</th>
+                                            <th>Visits</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for user in user_data %}
+                                        <tr class="table-body">
+                                            <td>{{ user.mobilenumber }}</td>
+
+                                            <td class="profile">
+                                                <span class="profile-img-sec">
+                                                    <img src="{% static 'images/profile-pic.svg' %}" alt="profile-pic"
+                                                        class="img-fluid">
+                                                </span>
+
+                                                <span>{{ user.name }}</span>
+                                            </td>
+
+                                            <td class="text-danger text-center">{{ user.target_points }}</td>
+                                            <td class="text-success text-center">{{ user.achieved_points }}</td>
+                                            <td><span class="total-sale">{{ user.sales }}</span></td>
+                                            <td>{{ user.visited }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        </div>
-                        <div class="table-bottom">
+                        <!-- <div class="table-bottom">
                             <p></p>
                             <p>
                                 <a href="#lastdata">
@@ -87,7 +88,7 @@
                                         class="fa-solid fa-arrow-up"></i></span>
                                 <span class="compared-last-month-text">Compared to Last Month</span>
                             </p>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -102,26 +103,26 @@
                                     class="fa-solid fa-arrow-down"></i></span>
                         </div>
                         <div class="f-top-one-list">
-                         
-                                <div class="carousel-container2">
-                                    <table class="table">
-                                        <tbody >
-                                            {% for user in user_data %}
-                                            <tr class="second">
-                                                <td class="list-call row">
-                                                    <span class="caller-name col-md-8">{{ user.name }}</span>
-                                                    <span class="caller-count col-md-2">{{ user.visits_arranged}}</span>
-                                                    <span class="col-md-2"></span>
-                                                </td>
-    
-                                            </tr>
-                                            {% endfor %}
-                                        </tbody>
-                                    </table>
-                                
-                                    
-                                </div>
-                            
+
+                            <div class="carousel-container2">
+                                <table class="table">
+                                    <tbody>
+                                        {% for user in user_data %}
+                                        <tr class="second">
+                                            <td class="list-call row">
+                                                <span class="caller-name col-md-8">{{ user.name }}</span>
+                                                <span class="caller-count col-md-2">{{ user.visits_arranged}}</span>
+                                                <span class="col-md-2"></span>
+                                            </td>
+
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+
                             <!-- <div class="list-call row">
                                 <span class="caller-name col-md-8">Karthika</span>
                                 <span class="caller-count col-md-2">25</span>
@@ -141,12 +142,23 @@
                         </div>
                     </div>
                     <div class="f-top-second f-two">
-                        <p>Present:{{presentCount}}</p>
-                        <p>Absentees: {{absentCount}}</p>
-                        
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="attendancechart">
+                                    <canvas id="myChart4" width="100" height="100"></canvas>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <p class="mb-4 perfomance">Attendanced </p>
+                                <div class="attendance-count"><p class="circl-atten present"></p><p>Present:{{presentCount}}</p></div>
+                                <div class="attendance-count"><p class="circl-atten absent"></p><p>Absentees: {{absentCount}}</p></div>
+                               
+                            </div>
+                        </div>
+
                     </div>
-                    
-                </div> 
+
+                </div>
                 <div class="col-md-3">
                     <div class="f-top-second f-one">
                         <img src="{% static 'images/user-Locations.svg' %}" alt="user_location">
@@ -154,10 +166,10 @@
                     </div>
                     <div class="f-top-second lead-port-con">
                         <div class="lead-port">
-                        <div class="py-1">
-                            <span class="total-lead-text">TOTAL LEADS</span>
-                            <span class="lead-number" id="totalflead"></span>
-                        </div>
+                            <div class="py-1">
+                                <span class="total-lead-text">TOTAL LEADS</span>
+                                <span class="lead-number" id="totalflead"></span>
+                            </div>
                             <table id="leadTable" class="table my-2" style="border: none;"></table>
                             <!-- <div class="lead-list">
                                 <span>AJAX - ANITHA</span>
@@ -251,40 +263,44 @@
                     <div class="bottom-box m-0 p-0">
                         <div class="overall-sale">
                             <div class="timer-f">
-                                <p class="time-remain-text"><img src="{% static 'images/clock-time.svg' %}" alt="clock-timer" class="img-fluid clock-icon"> Time remaining</p>
+                                <p class="time-remain-text"><img src="{% static 'images/clock-time.svg' %}"
+                                        alt="clock-timer" class="img-fluid clock-icon"> Time remaining</p>
                                 <div class="day-timer">
-                                  <div class="total-clock">
-                                    <div class="tim">
-                                        <p id="Days" class="numb"></p><p class="semi">:</p>
-                                      </div>
-                                      <p class="clock-bottom-text">Days</p>
-                                  </div>
-                                  <div class="total-clock">
-                                    <div class="tim">
-                                        <p id="Hours" class="numb"></p><p class="semi">:</p>
-                                      </div>
-                                      <p class="clock-bottom-text">Hours</p>
-                                  </div>
-                                   
-                                   <div class="total-clock">
-                                    <div class="tim">
-                                        <p id="Minutes" class="numb"></p><p class="semi">:</p>
+                                    <div class="total-clock">
+                                        <div class="tim">
+                                            <p id="Days" class="numb"></p>
+                                            <p class="semi">:</p>
+                                        </div>
+                                        <p class="clock-bottom-text">Days</p>
                                     </div>
-                                    <p class="clock-bottom-text">Minutes</p>
-                                   </div>
-                                   <div class="total-clock">
-                                    <div class="tim">
-                                        <p id="Seconds" class="numb"></p>
-                                       </div>
-                                       <p class="clock-bottom-text">Seconds</p>
-                                   </div>
+                                    <div class="total-clock">
+                                        <div class="tim">
+                                            <p id="Hours" class="numb"></p>
+                                            <p class="semi">:</p>
+                                        </div>
+                                        <p class="clock-bottom-text">Hours</p>
+                                    </div>
+
+                                    <div class="total-clock">
+                                        <div class="tim">
+                                            <p id="Minutes" class="numb"></p>
+                                            <p class="semi">:</p>
+                                        </div>
+                                        <p class="clock-bottom-text">Minutes</p>
+                                    </div>
+                                    <div class="total-clock">
+                                        <div class="tim">
+                                            <p id="Seconds" class="numb"></p>
+                                        </div>
+                                        <p class="clock-bottom-text">Seconds</p>
+                                    </div>
                                 </div>
                                 <p class="static-date">Target Date : <span> 30.09.2023</span></p>
                             </div>
-                                  
-                           
+
+
                             <!-- <p class="static-date">Target Date : 30.09.2023</p> -->
-                          
+
                         </div>
                     </div>
                 </div>
@@ -295,9 +311,9 @@
                                 <div class="boost-chart">
                                     <canvas id="myChart3" width="100" height="100"></canvas>
                                 </div>
-                                <!-- <div class="boost-img">
+                                <div class="boost-img">
                                     <img src="../static/images/boost-img.png" alt="boost-img">
-                                </div> -->
+                                </div>
                                 <div class="center-text-boost">
                                     <p class="boost-precentage">84%</p>
                                     <p class="text-boost">
@@ -389,7 +405,7 @@
         //                 ticks: {
         //                     fontSize: 10,
         //                     color: 'white',
-                          
+
 
         //                 },
         //                 gridLines: {
@@ -458,6 +474,33 @@
             }
         });
 
+        // =======================
+
+        var xValues = [];
+        var yValues = [84, 16];
+        var barColors = [
+            "#006aff",
+            "#ccc",
+        ];
+        new Chart("myChart4", {
+            type: "doughnut",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    backgroundColor: barColors,
+                    data: yValues,
+                    borderColor: 'transparent'
+                }]
+            },
+            options: {
+                cutoutPercentage: 80,
+                title: {
+                    display: true,
+                    text: ""
+                }
+            }
+        });
+
         $(document).ready(function () {
             // Call the update functions immediately
             updateState1();
@@ -468,32 +511,31 @@
 
             // Periodically update other data
             setInterval(updateState, 1000);
-        }); 
-  
+        });
+
         function updateState1() {
             $.ajax({
                 url: "/flead/",
                 type: 'GET'
             })
-            .done(response =>
-            {   
-                const data = response
-                const facebookLeads = data["faceboodklead"];
-                totaladleads = data["totaladleads"];
-                console.log("ad",totaladleads)
-                
-                // Build the HTML for the table
-                let tableHTML = "";
-                for (const lead of facebookLeads) {
-                    tableHTML += `<tr style='border:none;border-radius:10px;' class="bor-data">
+                .done(response => {
+                    const data = response
+                    const facebookLeads = data["faceboodklead"];
+                    totaladleads = data["totaladleads"];
+                    console.log("ad", totaladleads)
+
+                    // Build the HTML for the table
+                    let tableHTML = "";
+                    for (const lead of facebookLeads) {
+                        tableHTML += `<tr style='border:none;border-radius:10px;' class="bor-data">
                                     <td class="t-data">${lead.ad_name}</td>
                                     <td class="t-data">${lead.lead_count}</td>
                                 </tr>`;
-                }
-                document.getElementById("leadTable").innerHTML = tableHTML;
-                document.getElementById("totalflead").innerHTML =totaladleads;
-                document.getElementById("totalflead1").innerHTML =totaladleads;
-            });
+                    }
+                    document.getElementById("leadTable").innerHTML = tableHTML;
+                    document.getElementById("totalflead").innerHTML = totaladleads;
+                    document.getElementById("totalflead1").innerHTML = totaladleads;
+                });
         }
 
         function updateState() {
@@ -501,97 +543,96 @@
                 url: "/get_data/",
                 type: 'GET'
             })
-            .done(response =>
-                    {   
-                        const data = response
-                        time2 = data["time2"]; // Assuming "time" contains t2 from the Flask backend
-                        currentTime = new Date(time2);
-                        targetDate = new Date("2023-09-30T00:00:00");
-                        timeDifference = targetDate - currentTime;
-                        daysRemaining = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-                        hoursRemaining = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                        minutesRemaining = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-                        secondsRemaining = Math.floor((timeDifference % (1000 * 60)) / 1000);
-                        function addLeadingZero(number) {
-                                return number.toString().padStart(2, '0');
-                        }
-                        document.getElementById('Days').innerText=addLeadingZero(daysRemaining)
-                        document.getElementById('Hours').innerText=addLeadingZero(hoursRemaining)
-                        document.getElementById('Minutes').innerText=addLeadingZero(minutesRemaining)
-                        document.getElementById('Seconds').innerText=addLeadingZero(secondsRemaining)
-
-                        // document.getElementById("countdown").innerText = daysRemaining + "" + hoursRemaining + "" + minutesRemaining + "" + secondsRemaining + "";
-                        time=data["time"]
-                        document.getElementById("time1").innerHTML=time
-                    });
-                }
-
-
-
-
-                    </script>
-                    <script>
-                        function checkInternetAndRefresh() {
-                        if (navigator.onLine) {
-                            location.reload();
-                        }
-                        }
-                    
-                        setInterval(checkInternetAndRefresh, 900000);
-                    </script>
-                    <script>
-                    // Function to move the first table rows upward and downward
-                    function animateTable1() {
-                    const $table1 = $('.carousel-container table');
-                    const $tableBody1 = $table1.find('tbody');
-                    const rowHeight1 = $table1.find('tr:first').outerHeight();
-
-                    // Animate the table rows
-                    function moveRows1() {
-                        $tableBody1.animate({ marginTop: -rowHeight1 }, 1000, 'linear', function () {
-                            // Move the first row to the end and reset margin
-                            $tableBody1.find('tr:first').appendTo($tableBody1);
-                            $tableBody1.css('marginTop', 0);
-                        });
+                .done(response => {
+                    const data = response
+                    time2 = data["time2"]; // Assuming "time" contains t2 from the Flask backend
+                    currentTime = new Date(time2);
+                    targetDate = new Date("2023-09-30T00:00:00");
+                    timeDifference = targetDate - currentTime;
+                    daysRemaining = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                    hoursRemaining = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    minutesRemaining = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                    secondsRemaining = Math.floor((timeDifference % (1000 * 60)) / 1000);
+                    function addLeadingZero(number) {
+                        return number.toString().padStart(2, '0');
                     }
+                    document.getElementById('Days').innerText = addLeadingZero(daysRemaining)
+                    document.getElementById('Hours').innerText = addLeadingZero(hoursRemaining)
+                    document.getElementById('Minutes').innerText = addLeadingZero(minutesRemaining)
+                    document.getElementById('Seconds').innerText = addLeadingZero(secondsRemaining)
 
-                    // Start the animation
-                    setInterval(moveRows1, 3000); // Adjust the interval as needed
-                }
-
-                // Call the function when the document is ready
-                $(document).ready(function () {
-                    animateTable1();
+                    // document.getElementById("countdown").innerText = daysRemaining + "" + hoursRemaining + "" + minutesRemaining + "" + secondsRemaining + "";
+                    time = data["time"]
+                    document.getElementById("time1").innerHTML = time
                 });
+        }
 
-                    // Function to move the second table rows upward and downward
-                    function animateTable2() {
-                        const $table2 = $('.carousel-container2 table');
-                        const $tableBody2 = $table2.find('tbody');
-                        const rowHeight2 = $table2.find('tr:first').outerHeight();
 
-                        // Clone the first row and append it to the end to create a continuous loop
-                        
 
-                        // Animate the table rows
-                        function moveRows2() {
-                            $tableBody2.animate({ marginTop: -rowHeight2 }, 1000, 'linear', function () {
-                                // Move the first row to the end and reset margin
-                                $tableBody2.find('tr:first').appendTo($tableBody2);
-                                $tableBody2.css('marginTop', 0);
-                            });
-                        }
 
-                        // Start the animation
-                        setInterval(moveRows2, 5000); // Adjust the interval as needed
-                    }
+    </script>
+    <script>
+        function checkInternetAndRefresh() {
+            if (navigator.onLine) {
+                location.reload();
+            }
+        }
 
-                    // Call the function when the document is ready
-                    $(document).ready(function () {
-                        animateTable2();
-                    });
-                </script>
-                
+        setInterval(checkInternetAndRefresh, 900000);
+    </script>
+    <script>
+        // Function to move the first table rows upward and downward
+        function animateTable1() {
+            const $table1 = $('.carousel-container table');
+            const $tableBody1 = $table1.find('tbody');
+            const rowHeight1 = $table1.find('tr:first').outerHeight();
+
+            // Animate the table rows
+            function moveRows1() {
+                $tableBody1.animate({ marginTop: -rowHeight1 }, 1000, 'linear', function () {
+                    // Move the first row to the end and reset margin
+                    $tableBody1.find('tr:first').appendTo($tableBody1);
+                    $tableBody1.css('marginTop', 0);
+                });
+            }
+
+            // Start the animation
+            setInterval(moveRows1, 3000); // Adjust the interval as needed
+        }
+
+        // Call the function when the document is ready
+        $(document).ready(function () {
+            animateTable1();
+        });
+
+        // Function to move the second table rows upward and downward
+        function animateTable2() {
+            const $table2 = $('.carousel-container2 table');
+            const $tableBody2 = $table2.find('tbody');
+            const rowHeight2 = $table2.find('tr:first').outerHeight();
+
+            // Clone the first row and append it to the end to create a continuous loop
+
+
+            // Animate the table rows
+            function moveRows2() {
+                $tableBody2.animate({ marginTop: -rowHeight2 }, 1000, 'linear', function () {
+                    // Move the first row to the end and reset margin
+                    $tableBody2.find('tr:first').appendTo($tableBody2);
+                    $tableBody2.css('marginTop', 0);
+                });
+            }
+
+            // Start the animation
+            setInterval(moveRows2, 5000); // Adjust the interval as needed
+        }
+
+        // Call the function when the document is ready
+        $(document).ready(function () {
+            animateTable2();
+        });
+    </script>
+
 </body>
 
 </html>
