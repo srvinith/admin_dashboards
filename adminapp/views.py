@@ -132,7 +132,7 @@ def home(request):
         #Sales perfomance table and visit arranged table
         user_data = []
 
-        
+        x
         try:
             for uid in PRpoints:   
                 name = PRpoints[uid].get("name")

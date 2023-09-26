@@ -16,39 +16,7 @@
     <link rel="stylesheet" href="{%static 'fonts/all.css'%}">
     <!-- fontawesome fonts End -->
     <title>Admin Dashboard</title>
-    <!-- <style>
-        .carousel-container {
-            height: 300px; /* Adjust the height as needed */
-            overflow: hidden;
-            }
-
-        .carousel-containers {
-            height: 300px; /* Adjust the height as needed */
-            overflow: hidden;
-            }    
-        .carousel-container table tbody tr {
-            transition: margin-top 0.5s ease-in-out; /* Adjust the transition duration and timing function as needed */
-            } 
-        .list-wrapper {
-            animation: moveList 20s linear infinite; /* Adjust the animation duration as needed */
-            }
-
-        .list-call {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px; /* Adjust spacing between items as needed */
-            }
-            @keyframes moveList {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(-100%);
-            }
-            }   
-
-    </style> -->
-</head>
+  </head>
 
 <body>
     <div class="container-fluid">
@@ -135,8 +103,6 @@
                         </div>
                         <div class="f-top-one-list">
                          
-                                
-                                 
                                 <div class="carousel-container2">
                                     <table class="table">
                                         <tbody >
@@ -175,42 +141,24 @@
                         </div>
                     </div>
                     <div class="f-top-second f-two">
-                        <div class="row">
-                            <div class="col-md-5">
-                                <div class="customer-main-con">
-                                    <div class="customer-line-text">
-                                        <span class=""><i class="fa-solid fa-user-group"></i><span
-                                                class="customer-text"> <p>Present counts: {{presentCount}}</p>
-                        <p>Absent counts: {{absentCount}}</p></span></span>
-                                    </div>
-                                    <div class="customer-count">
-                                        <h2></h2>
-                                        <p class="text-success">{{curr_week}} week of {{curr_year}} </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-7">
-                                <div class="chart">
-                                    <canvas id="myChart31" width="140" height="110"></canvas>
-
-                                </div>
-                            </div>
-                        </div>
+                        <p>Present:{{presentCount}}</p>
+                        <p>Absentees: {{absentCount}}</p>
+                        
                     </div>
                     
                 </div> 
                 <div class="col-md-3">
                     <div class="f-top-second f-one">
-                        <iframe
-                            src="https://www.google.com/maps/d/embed?mid=19GmmDsf0ZrM4innqgkxCZcoNuog&hl=en&ehbc=2E312F"
-                            width="300" height="210"></iframe>
+                        <img src="{% static 'images/user-Locations.svg' %}" alt="user_location">
                         <p class="mt-3"></p>
                     </div>
                     <div class="f-top-second lead-port-con">
                         <div class="lead-port">
+                        <div class="py-1">
                             <span class="total-lead-text">TOTAL LEADS</span>
                             <span class="lead-number" id="totalflead"></span>
-                            <table id="leadTable" class="table my-1" style="border: none;"></table>
+                        </div>
+                            <table id="leadTable" class="table my-2" style="border: none;"></table>
                             <!-- <div class="lead-list">
                                 <span>AJAX - ANITHA</span>
                                 <span>08</span>
@@ -302,27 +250,37 @@
                 <div class="col-md-4">
                     <div class="bottom-box m-0 p-0">
                         <div class="overall-sale">
-                        
-                                <div class="tim">
-                                    <p id="Days" class="numb"></p>
-                                
-                                 
-                             
-                               
-                                    <p id="Hours" class="numb"></p>
-                                  
-                                  
-                               
-                               
-                  
-                                    <p id="Minutes" class="numb"></p>
-                                    <p id="Seconds" class="numb"></p>
-        
-                                 
-                                    <p id ="time1" ></p>
-                                    <p>{{curr_date}}</p>
-                                    <!-- <span id ="countdown" class="text-white date"></span> -->
+                            <div class="timer-f">
+                                <p class="time-remain-text"><img src="{% static 'images/clock-time.svg' %}" alt="clock-timer" class="img-fluid clock-icon"> Time remaining</p>
+                                <div class="day-timer">
+                                  <div class="total-clock">
+                                    <div class="tim">
+                                        <p id="Days" class="numb"></p><p class="semi">:</p>
+                                      </div>
+                                      <p class="clock-bottom-text">Days</p>
+                                  </div>
+                                  <div class="total-clock">
+                                    <div class="tim">
+                                        <p id="Hours" class="numb"></p><p class="semi">:</p>
+                                      </div>
+                                      <p class="clock-bottom-text">Hours</p>
+                                  </div>
+                                   
+                                   <div class="total-clock">
+                                    <div class="tim">
+                                        <p id="Minutes" class="numb"></p><p class="semi">:</p>
+                                    </div>
+                                    <p class="clock-bottom-text">Minutes</p>
+                                   </div>
+                                   <div class="total-clock">
+                                    <div class="tim">
+                                        <p id="Seconds" class="numb"></p>
+                                       </div>
+                                       <p class="clock-bottom-text">Seconds</p>
+                                   </div>
                                 </div>
+                                <p class="static-date">Target Date : <span> 30.09.2023</span></p>
+                            </div>
                                   
                            
                             <!-- <p class="static-date">Target Date : 30.09.2023</p> -->
